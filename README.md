@@ -1,6 +1,6 @@
 # ahk-virtual-desktop-restore
 
-Based on and using [VirtualDesktopAccessor](https://github.com/Ciantic/VirtualDesktopAccessor):
+Can save/restore window positions based on title, including their virtual desktop position. Based on and uses [VirtualDesktopAccessor](https://github.com/Ciantic/VirtualDesktopAccessor).
 
 - Download and install DLL from VirtualDesktopAccessor to `C:\Program Files\AutoHotkey\VirtualDesktopAccessor.dll` (or fix reference at top of script)
 - Use Ctrl+Win+2 to save your window positions to the script
