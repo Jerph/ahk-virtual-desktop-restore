@@ -1,4 +1,22 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+
+DefaultWindowLocations() {
+	global firefoxWindowsMoved
+	; Reset status so it can track whether it's activated and set the first tab on each window
+	firefoxWindowsMoved := 0
+
+  MoveWindowsToDesktop("Visual Studio Code$", 1, 1152, 0, 1920, 2130) ; Chrome_WidgetWin_1
+  MoveWindowsToDesktop("^Slack", 1, 862, 2152, 1936, 1066) ; Chrome_WidgetWin_1
+  MoveWindowsToDesktop("Signal", 1, 2885, 616, 782, 646) ; Chrome_WidgetWin_1
+  MoveFirefoxWindowsToDesktop("Gmail", 0, 1147, 0, 1930, 2135)
+  MoveFirefoxWindowsToDesktop("Boards", 1, 1147, 0, 1930, 2135)
+}
+
+RestoreWindowLocations() {
+	;begin_locations
+	;end_locations
+}
+
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -216,33 +234,12 @@ SaveWindowLocations() {
 	DetectHiddenWindows, On
 }
 
-RestoreWindowLocations() {
-	;begin_locations
-	;end_locations
-}
-
-DefaultWindowLocations() {
-	global firefoxWindowsMoved
-	; Reset status so it can track whether it's activated and set the first tab on each window
-	firefoxWindowsMoved := 0
-
-  MoveWindowsToDesktop("Visual Studio Code$", 1, 1152, 0, 1920, 2130) ; Chrome_WidgetWin_1
-  MoveWindowsToDesktop("^Slack", 1, 862, 2152, 1936, 1066) ; Chrome_WidgetWin_1
-  MoveWindowsToDesktop("Signal", 1, 2885, 616, 782, 646) ; Chrome_WidgetWin_1
-  MoveFirefoxWindowsToDesktop("Gmail", 0, 1147, 0, 1930, 2135)
-  MoveFirefoxWindowsToDesktop("Boards", 1, 1147, 0, 1930, 2135)
-}
-
 ; Switching desktops:
 ; Win + Ctrl + 1 = Switch to desktop 1
 ^#1::GoToDesktopNumber(0)
 
 ; Win + Ctrl + 2 = Switch to desktop 2
 ^#2::GoToDesktopNumber(1)
-
-^#[::GoToPrevDesktop()
-
-^#]::GoToNextDesktop()
 
 ; Moving windowes:
 ; Win + Shift + 1 = Move current window to desktop 1, and go there
